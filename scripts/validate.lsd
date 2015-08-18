@@ -1,0 +1,13 @@
+
+URL url = new URL('http://vocab.lappsgrid.org/schema/lif-schema.json')
+Validator validator = new Validator(url)
+
+File directory = new File('/Users/suderman/Workspaces/galaxy/gate_2_0_0/test-data')
+directory.eachFileMatch(~/.*\.gate$/) { File file ->
+	println "Validating ${file.path}"
+	Data data = Serializer.parse(file.text, Data)	
+	def result = validator.validate(Serializer.asJson(data.payload))
+	println result
+}
+println "Done"
+

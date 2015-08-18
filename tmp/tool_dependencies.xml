@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="lsd" version="2.2.1">
+    <repository name="package_lsd_2_2_1" owner="ksuderman" toolshed="http://localhost:9009"/>
+  </package>
+</tool_dependency>

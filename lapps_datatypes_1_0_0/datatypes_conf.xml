@@ -1,0 +1,29 @@
+<datatypes>
+	<datatype_files>
+		<datatype_file name="lapps.py"/>
+	</datatype_files>
+	<registration proprietary_converter_path="converters">
+		<datatype extension="lapps" type="galaxy.datatypes.lapps:Lapps" display_in_upload="True" mimetype="application/json">
+		  <!-- <converter file="lif_to_gate_converter.xml" target_datatype="gate"/> -->
+		</datatype>
+		<datatype extension="gate" type="galaxy.datatypes.lapps:Gate" display_in_upload="true" mimetype="application/json">
+			<!--
+		  <converter file="gate_to_lif_converter.xml" target_datatype="lif"/>
+		  <converter file="gate_to_lif_converter.xml" target_datatype="lapps"/>
+		  -->
+		  <!-- <converter file="gate_to_lif_converter.xml" target_datatype="json"/> -->
+		</datatype>
+		<datatype extension="lif" type="galaxy.datatypes.lapps:Lif" display_in_upload="True" mimetype="application/json">
+		  <converter file="lif_to_gate.xml" target_datatype="gate"/>
+		</datatype>
+		<datatype extension="ldc" type="galaxy.datatypes.lapps:Ldc" display_in_upload="True" mimetype="application/json">
+		  <converter file="ldc_to_lif_converter.xml" target_datatype="lif"/>
+		</datatype>
+	</registration>
+	<sniffers>
+		<sniffer type="galaxy.datatypes.lapps.Lapps"/>
+		<sniffer type="galaxy.datatypes.lapps.Lif"/>
+		<sniffer type="galaxy.datatypes.lapps.Gate"/>
+		<sniffer type="galaxy.datatypes.lapps.Ldc"/>
+	</sniffers>
+</datatypes>

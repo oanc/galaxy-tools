@@ -1,0 +1,20 @@
+<tool id='gate.tokenizer_2.0.0' name='GATE Tokenizer v2.0.0' version='2.0.0'>
+  <description>ANNIE Tokeniser from GATE.</description>
+  <command interpreter='lsd'>../lapps_common/invoke_vassar.lsd gate.tokenizer_2.0.0 $input $output</command>
+  <requirements>
+  	<package name='lsd' 
+  </requirements>
+  <inputs>
+    <param name='input' type='data' label='input' />
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='hello_world.txt'/>
+  		<output name='output' value='tokenizer-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Tokeniser from GATE.</help>
+</tool>

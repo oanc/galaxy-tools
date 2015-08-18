@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<repositories description="Lapps services require the lsd interpreter.">
+    <repository toolshed="http://localhost:9009" name="lsd" owner="ksuderman"/>
+</repositories>

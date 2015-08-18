@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="lsdsl" version="2.2.1">
+    <install version="1.0">
+      <actions>
+        <action type="download_by_url">http://www.anc.org/downloads/lsd-2.2.1.tgz</action>
+        <!--
+        <action type="download_by_url">file:/Users/suderman/Downloads/lsd-2.2.1.tgz</action>
+        -->
+		<action type="move_directory_files">
+			<source_directory>.</source_directory>
+			<destination_directory>$INSTALL_DIR/bin</destination_directory>
+		</action>        
+        <action type="set_environment">
+            <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+        </action>
+        <!--
+        -->
+      </actions>
+    </install>
+
+    <readme>
+      The Lappsgrid Services DSL
+
+      https://github.com/ksuderman/org.anc.lapps.dsl
+    </readme>
+
+  </package>
+</tool_dependency>

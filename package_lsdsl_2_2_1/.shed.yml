@@ -1,0 +1,16 @@
+categories:
+- Tool Dependency Packages
+- NLP
+description: The Lappsgrid Services DSL.
+name: package_lsdsl_2_2_1
+owner: ksuderman
+long_description: |
+  The Lappsgrid Services DSL (Domain Specific Language) is the command interpreter used
+  by the Lappgrid wrappers to invoke the SOAP web services available on the Language
+  Application Grid (http://www.lappsgrid.org).  LSD provides a simple high level API that
+  allows programmers to invoke services in a few lines of code.
+  
+  http://github.com/ksuderman/org.anc.lapps.dsl
+remote_repository_url: http://github.com/ksuderman/org.anc.lapps.dsl
+homepage_url: http://www.lappsgrid.org
+type: tool_dependency_definition

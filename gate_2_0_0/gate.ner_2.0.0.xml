@@ -1,0 +1,21 @@
+<tool id='gate.ner_2.0.0' name='GATE Named Entity Recognizer' version='2.0.0'>
+  <description>ANNIE Named Entity Recognizer from GATE.</description>
+  <command interpreter='lsd'>invoke.lsd gate.ner_2.0.0 $input $output $username $password</command>
+  <inputs>
+    <param name='input' type='data' label='input' format='gate' />
+    <param name="username" type="text" label="Username" value="tester"/>
+    <param name="password" type="text" label="Password" value="tester"/>
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='gazetteer-expected.gate'/>
+  		<param name='username' value='tester'/>
+  		<param name='password' value='tester'/>
+  		<output name='output' file='ner-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Named Entity Recognizer from GATE.</help>
+</tool>

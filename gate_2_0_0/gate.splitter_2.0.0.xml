@@ -1,0 +1,21 @@
+<tool id='gate.splitter_2.0.0' name='GATE Sentence Splitter' version='2.0.0'>
+  <description>ANNIE Sentence Splitter from GATE.</description>
+  <command interpreter='lsd'>invoke.lsd gate.splitter_2.0.0 $input $output $username $password</command>
+  <inputs>
+    <param name='input' type='data' label='input' format='gate' />
+    <param name="username" type="text" label="Username" value="tester"/>
+    <param name="password" type="text" label="Password" value="tester"/>
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='tokenizer-expected.gate'/>
+  		<param name='username' value='tester'/>
+  		<param name='password' value='tester'/>
+  		<output name='output' file='splitter-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Sentence Splitter from GATE.</help>
+</tool>

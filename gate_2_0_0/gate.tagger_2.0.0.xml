@@ -1,0 +1,21 @@
+<tool id='gate.tagger_2.0.0' name='GATE Part of Speech Tagger' version='2.0.0'>
+  <description>ANNIE Part of Speech Tagger from GATE.</description>
+  <command interpreter='lsd'>invoke.lsd gate.tagger_2.0.0 $input $output $username $password</command>
+  <inputs>
+    <param name='input' type='data' label='input' format='gate' />
+    <param name="username" type="text" label="Username" value="tester"/>
+    <param name="password" type="text" label="Password" value="tester"/>
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='splitter-expected.gate'/>
+  		<param name='username' value='tester'/>
+  		<param name='password' value='tester'/>
+  		<output name='output' file='tagger-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Part of Speech Tagger from GATE.</help>
+</tool>

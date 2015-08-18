@@ -1,0 +1,44 @@
+import static org.lappsgrid.discriminator.Discriminators.Uri
+
+String username = 'tester'
+String password = 'tester'
+
+Data data = new Data()
+data.discriminator = Uri.TEXT
+data.payload = "Hello world."
+String json = data.asJson()
+
+File directory = new File('test-data')
+
+WebService tokenizer = create('tokenizer')
+WebService splitter = create('splitter')
+WebService tagger = create('tagger')
+
+json = tokenizer.execute(json)
+json = splitter.execute(json)
+json = tagger.execute(json)
+
+//String json = new File(directory, 'splitter-expected.gate').text
+//WebService splitter = create('tagger')
+new File(directory, 'tagger-expected.gate').text = json
+println "Done."
+return
+
+['tokenizer', 'splitter', 'tagger', 'gazetteer', 'ortho', 'ner'].each { name ->
+	println "Running $name"
+	WebService service = create(name)
+	json = service.execute(json)
+	new File(directory, "${name}.gate").text = json
+}
+
+println "Done."
+ 
+//String url = "http://vassar.lappsgrid.org/invoker/$id"
+//WebService service = new ServiceClient(url, username, password)
+//output.text = service.execute(data.asJson())
+
+
+WebService create(String name) {
+	String url = "http://vassar.lappsgrid.org/invoker/anc:gate.${name}_2.0.0"
+	return new ServiceClient(url, "tester", "tester")
+}

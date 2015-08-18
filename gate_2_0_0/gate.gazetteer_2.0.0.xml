@@ -1,0 +1,21 @@
+<tool id='gate.gazetteer_2.0.0' name='GATE Gazetteer' version='2.0.0'>
+  <description>ANNIE Gazetteer from GATE.</description>
+  <command interpreter='lsd'>invoke.lsd gate.gazetteer_2.0.0 $input $output $username $password</command>
+  <inputs>
+    <param name='input' type='data' label='input' format='gate' />
+    <param name="username" type="text" label="Username" value="tester"/>
+    <param name="password" type="text" label="Password" value="tester"/>
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='tagger-expected.gate'/>
+  		<param name='username' value='tester'/>
+  		<param name='password' value='tester'/>
+  		<output name='output' file='gazetteer-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Gazetteer from GATE.</help>
+</tool>

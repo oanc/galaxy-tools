@@ -1,0 +1,21 @@
+<tool id='gate.tokenizer_2.0.0' name='GATE Tokenizer' version='2.0.0'>
+  <description>ANNIE Tokeniser from GATE.</description>
+  <command interpreter='lsd'>invoke.lsd gate.tokenizer_2.0.0 $input $output $username $password</command>
+  <inputs>
+    <param name='input' type='data' label='input' format='txt,data,xml' />
+    <param name="username" type="text" label="Username" value="tester"/>
+    <param name="password" type="text" label="Password" value="tester"/>
+  </inputs>
+  <outputs>
+    <data name='output' format='gate' />
+  </outputs>
+  <tests>
+  	<test>
+  		<param name='input' value='hello_world.txt'/>
+  		<param name='username' value='tester'/>
+  		<param name='password' value='tester'/>
+  		<output name='output' file='tokenizer-expected.gate' ftype='gate'/>
+  	</test>
+  </tests>
+  <help>ANNIE Tokeniser from GATE.</help>
+</tool>
