@@ -2,7 +2,7 @@
   <description>ANNIE Tokeniser from GATE.</description>
   <command interpreter='lsd'>invoke.lsd gate.tokenizer_2.0.0 $input $output $username $password</command>
   <inputs>
-    <param name='input' type='data' label='input' format='txt,data,xml' />
+    <param name='input' type='data' label='input' format='txt,gate,xml' />
     <param name="username" type="text" label="Username" value="tester"/>
     <param name="password" type="text" label="Password" value="tester"/>
   </inputs>
