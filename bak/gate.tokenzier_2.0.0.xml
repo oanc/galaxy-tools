@@ -1,9 +1,9 @@
-<tool id='gate.tokenizer_2.0.0' name='GATE Tokenizer' version='2.0.0'>
+<tool id='gate.tokenzier_2.0.0' name='GATE Tokenizer' version='2.0.0'>
     <description>Adds token annotations to the document.</description>
+    <command interpreter='lsd'>invoke.lsd gate.tokenzier_2.0.0 $input $output $username $password</command>
     <requirements>
         <requirement type='package' version='2.2.1'>lsdsl</requirement>
     </requirements>
-    <command interpreter='lsd'>invoke.lsd gate.tokenizer_2.0.0 $input $output $username $password</command>
     <inputs>
         <param name='input' type='data' label='input' format='text,gate,xml' />
         <param name='username' type='text' label='Username' value='tester' />
@@ -12,16 +12,8 @@
     <outputs>
         <data name='output' format='gate' />
     </outputs>
-    <tests>
-        <test>
-            <param name='input' value='hello_world.txt' />
-            <param name='username' value='tester' />
-            <param name='password' value='tester' />
-            <output name='output' file='tokenizer-expected.gate' ftype='gate' />
-        </test>
-    </tests>
-    <citations>
-        <citation type='bibtex'>@Book{Cunningham2011a,
+    <citation type='bibtex'>
+@Book{Cunningham2011a,
   author = {Hamish Cunningham and Diana Maynard and Kalina Bontcheva and Valentin Tablan and Niraj Aswani and Ian Roberts and
     Genevieve Gorrell and Adam Funk and Angus Roberts and Danica Damljanovic and Thomas Heitz and Mark A. Greenwood and
     Horacio Saggion and Johann Petrak and Yaoyong Li and Wim Peters},
@@ -29,7 +21,13 @@
   isbn = {978-0956599315},
   year = 2011,
   url = {http://tinyurl.com/gatebook}
-}
-</citation>
-    </citations>
+}</citation>
+    <tests>
+        <test>
+            <param name='input' value='hello_world.txt' />
+            <param name='username' value='tester' />
+            <param name='password' value='tester' />
+            <param name='output' file='tokenzier-expected.gate' ftype='gate' />
+        </test>
+    </tests>
 </tool>

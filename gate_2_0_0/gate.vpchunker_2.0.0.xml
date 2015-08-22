@@ -1,11 +1,11 @@
-<tool id='gate.tokenizer_2.0.0' name='GATE Tokenizer' version='2.0.0'>
-    <description>Adds token annotations to the document.</description>
+<tool id='gate.vpchunker_2.0.0' name='GATE Verb Phrase Chunker' version='2.0.0'>
+    <description>Identifies verb chunks in the document. Requires Token+POS</description>
     <requirements>
         <requirement type='package' version='2.2.1'>lsdsl</requirement>
     </requirements>
-    <command interpreter='lsd'>invoke.lsd gate.tokenizer_2.0.0 $input $output $username $password</command>
+    <command interpreter='lsd'>invoke.lsd gate.vpchunker_2.0.0 $input $output $username $password</command>
     <inputs>
-        <param name='input' type='data' label='input' format='text,gate,xml' />
+        <param name='input' type='data' label='input' format='gate' />
         <param name='username' type='text' label='Username' value='tester' />
         <param name='password' type='text' label='Password' value='tester' />
     </inputs>
@@ -14,10 +14,10 @@
     </outputs>
     <tests>
         <test>
-            <param name='input' value='hello_world.txt' />
+            <param name='input' value='tagger-expected.gate' />
             <param name='username' value='tester' />
             <param name='password' value='tester' />
-            <output name='output' file='tokenizer-expected.gate' ftype='gate' />
+            <output name='output' file='vpchunker-expected.gate' ftype='gate' />
         </test>
     </tests>
     <citations>

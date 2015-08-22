@@ -1,0 +1,178 @@
+//package org.anc.galaxy
+
+import groovy.xml.MarkupBuilder
+import org.anc.json.compiler.*
+import org.lappsgrid.serialization.Serializer
+
+import java.nio.file.Path
+import java.nio.file.Paths
+
+CliBuilder cli = new CliBuilder()
+cli.header = "Generates the tool XML files for Galaxy."
+cli.usage = "groovy GenerateWrappers.groovy [-x <directory>] [-l]"
+cli.h(longOpt:'help', required:false, 'Displays this help message.')
+cli.v(longOpt:'version', required:false, 'Prints the application version number.')
+cli.i(longOpt:'input', required: false, args:1, 'Tools description file in simplified Json')
+cli.x(longOpt:'xml', required: false, args:1, 'Generates tool xml files to the specified directory.')
+cli.l(longOpt:'lsd', required:false, args:1, 'Prints the commands required to generate the test data files.')
+cli.c(longOpt:'citation', required:false, args:1, "Citation (if any) to be included in the Tool xml files.")
+cli.f(longOpt:'format', required: false, args:1, "Data format produces by the tools.")
+cli.d(longOpt:'directory', required:false, args:1, "Directory where output files will be written.")
+cli.footer = "If a citation is specified it will be included in all tool XML files."
+
+println "Args:"
+args.each { println it }
+
+def params = cli.parse(args)
+if (!params) return
+
+println "Params:"
+println params.inner
+params.arguments().each { println it }
+
+if (params.h) {
+	cli.usage()
+	return
+}
+
+if (params.v) {
+	println """
+LAPP Galaxy Tool Generator
+Copyright 2015 Language Application Grid
+Version 1.0.0
+"""
+	return
+}
+
+if (!params.i) {
+	println "ERROR: No input file specified."
+	cli.usage()
+	return
+}
+if (!params.f) {
+	println "ERROR: No output format specified."
+	cli.usage()
+	return
+}
+
+Worker app = new Worker()
+
+if (params.c) {
+	File citation = new File(params.c)
+	if (!citation.exists()) {
+		println "Unable to find the citation file."
+		return
+	}
+	app.citation = citation.text
+}
+if (params.d) {
+	app.directory = new File(params.d)
+	if (!app.directory.exists()) {
+		println "ERROR: Output directory not found."
+		return
+	}
+	if (!app.directory.isDirectory()) {
+		println "ERROR: Specified output location is not a directory."
+		return
+	}
+}
+
+app.format = params.f
+app.input = new File(params.i)
+if (!app.input.exists()) {
+	println "ERROR: Input file not found."
+	return
+}
+
+app.generate()
+return
+
+/**
+ * @author Keith Suderman
+ */
+class Worker {
+
+    //File directory = new File("/Users/suderman/Workspaces/galaxy/gate_2_0_0")
+    File directory
+    File input
+
+    Closure idGenerator = { name -> name }
+    String format
+    String citation = """
+@Book{Cunningham2011a,
+  author = {Hamish Cunningham and Diana Maynard and Kalina Bontcheva and Valentin Tablan and Niraj Aswani and Ian Roberts and
+    Genevieve Gorrell and Adam Funk and Angus Roberts and Danica Damljanovic and Thomas Heitz and Mark A. Greenwood and
+    Horacio Saggion and Johann Petrak and Yaoyong Li and Wim Peters},
+  title = {{Text Processing with GATE (Version 6)}},
+  isbn = {978-0956599315},
+  year = 2011,
+  url = {http://tinyurl.com/gatebook}
+}"""
+
+    void writeLsdScript(Map services) {
+        services.each { name,service ->
+            String id = idGenerator(name)
+            String output = "test-data/${name}-expected.${format}"
+            println "lsd invoke.lsd ${id} test-data/${service.input} ${output}"
+        }
+    }
+
+    void writeXml(String name, def service) {
+
+        String id = idGenerator(name)
+        File outfile = new File("/tmp/${id}.xml")
+        IndentPrinter printer = new IndentPrinter(new FileWriter(outfile), '    ')
+        MarkupBuilder xml = new MarkupBuilder(printer)
+        xml.tool(id:id, name:service.name, version:'2.0.0') {
+            description service.description
+            command(interpreter:'lsd', "invoke.lsd $id \$input \$output \$username \$password")
+            requirements {
+                requirement(type:'package',version:'2.2.1', 'lsdsl')
+            }
+            inputs {
+                param(name:'input', type:'data', label:'input', format:service.format)
+                param(name:'username', type:'text', label:'Username', value:'tester')
+                param(name:'password', type:'text', label:'Password', value:'tester')
+            }
+            outputs {
+                data(name:'output', format:format)
+            }
+            citation(type:'bibtex', citation)
+            tests {
+                test {
+                    param(name:'input', value: service.input)
+                    param(name:'username', value: 'tester')
+                    param(name:'password', value:'tester')
+                    param(name:'output', file:service.output, ftype:format)
+                }
+            }
+        }
+        println "Wrote ${outfile.path}"
+        //println xml.toString()
+    }
+
+    void generate() {
+        if (!directory.exists()) {
+            println "Galaxy workspace not found: ${directory.path}"
+            return
+        }
+
+        //URL resource = ClassLoader.getSystemResource('gate_services.lax')
+        SchemaCompiler compiler = new SchemaCompiler()
+        String json = compiler.compile(input)
+        Map services = Serializer.parse(json, Map)
+        writeLsdScript(services)
+//        services.each { name,service ->
+//            if (!service.output) {
+//                service.output = "${name}-expected.gate"
+//            }
+//            if (!service.format) {
+//                service.format = 'gate'
+//            }
+//            writeXml(name, service)
+//        }
+    }
+
+    public static void main(args) {
+    }
+}

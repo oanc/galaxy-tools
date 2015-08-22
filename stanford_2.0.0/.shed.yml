@@ -1,0 +1,11 @@
+categories: 
+  - NLP
+description: Stanford Processing Resources as LAPPS services.
+long_description: |
+  Processing resources from the Stanford NLP toolkit.
+name: lapps_stanford_2_0_0
+owner: ksuderman
+remote_repository_url: https://github.com/oanc/org.anc.lapps.stanford
+homepage_url: http://www.lappsgrid.org
+
+
