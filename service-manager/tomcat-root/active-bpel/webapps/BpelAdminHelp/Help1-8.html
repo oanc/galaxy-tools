@@ -1,0 +1,213 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <meta name="generator" description="DocFrame 1.1 from Scriptorium Publishing">
+      <link rel="stylesheet" type="text/css" href="AWFServer.css">
+   </head>
+   <body><a href="http://www.active-endpoints.com/"><img src="logo.gif" height="40" width="205" border="0" alt="ActiveBPEL"></a><table style="border-collapse: collapse; border: none;" width="23%">
+         <tr>
+            <td class="servernav-left"><b>Resources</b></td>
+         </tr>
+      </table>
+      <p class="Booktitle">ActiveBPEL&reg; 
+         Embedded Engine 
+         User&#8217;s Guide
+      </p>
+      <div id="left" style="top: 130px;">
+         <table cellpadding="0" cellspacing="0">
+            <tr>
+               <td class="servernav-leftTOC">
+                  <table width="175px;" cellpadding="0" cellspacing="0">
+                     <tr>
+                        <td class="navTableHead"> 
+                           Administration Console
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="content"><a href="Help1.html">Getting Started</a><br><a href="Help1-1.html">Home</a><br><a href="Help1-2.html">Engine</a><br><a href="Help1-3.html">Identity Service</a><br><a href="Help1-4.html">Deployment Status</a><br><a href="Help1-5.html">Process Status</a><br><a href="Help1-6.html">Process ID and Process Details</a><br></td>
+                     </tr>
+                  </table><br><table width="175px;">
+                     <tr>
+                        <td class="navTableHead">
+                           Documentation Set
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="content"><a href="doc/AdministrationConsole.pdf">Administration Console Help (.pdf)</a><br></td>
+                     </tr>
+                  </table><br><table width="175px;">
+                     <tr>
+                        <td class="navTableHead">
+                           Support
+                           
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="content"><a href="http://forums.active-endpoints.com">Active Endpoints Support</a><br></td>
+                     </tr>
+                  </table><br></td>
+            </tr>
+         </table>
+      </div>
+      <div id="main"><a name="CHDHBIAJ"></a><h2 class="Title2">Using the Process Details Graphic View</h2>
+         <p class="Para">The Graphic view of Process Details shows the main process
+            flow and the execution path through the process. You can also view
+            the process fault, event, and compensation handlers, if the process
+            definition includes these process-level handlers. The handlers have
+            their own tabs in the view.
+         </p>
+         <p class="Para">In the upper-right panel of the page, you see the main flow
+            of a BPEL process. The process diagram reflects the layout rendering
+            that is part of Active Endpoints BPEL design tool, <em class="Emphasis">ActiveBPEL
+               Designer</em>.
+         </p>
+         <p class="Para">Each process activity has an icon, a label, and an execution
+            state indicator, as shown in the following illustration.
+         </p>
+         <p><img src="ActivityIcons.gif" alt=""></p>
+         <p class="Caption">
+            
+         </p>
+         <table cellpadding="3" cellspacing="0">
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">1</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Activity icon. Activity icons are the same as those
+                     supplied with ActiveBPEL Designer. 
+                  </p>
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">2</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Activity label, which can be the activity type,
+                     name, type:name, or custom text
+                  </p>
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">3</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Execution state indicator. For a description of
+                     each indicator, see <span class="CrossRef"><a href="Help1-9.html">Using the Process Details Outline View</a></span>.
+                  </p>
+               </td>
+               
+            </tr>
+            
+            
+         </table>
+         <p class="Para">Activities may appear in different colors, to indicate different
+            execution states, as the following table describes.
+         </p>
+         <table cellpadding="3" cellspacing="0">
+            
+            
+            <tr>
+               <th class="TableHeading" valign="top">
+                  <p class="Para">Activity Color</p>
+               </th>
+               <th class="TableHeading" valign="top">
+                  <p class="Para">Execution State</p>
+               </th>
+            </tr>
+            
+            
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">full color</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Executed</p>
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">muted color</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Ready to execute or inactive</p>
+               </td>
+               
+            </tr>
+            
+            <tr>
+               
+               <td valign="top">
+                  <p class="Para">gray</p>
+               </td>
+               
+               <td valign="top">
+                  <p class="Para">Dead path</p>
+               </td>
+               
+            </tr>
+            
+            
+         </table>
+         <p class="Para"> </p>
+         <p class="Para">The Graphic view looks similar to the following example.</p>
+         <p><img src="ProcessDetails_GraphicalView.gif" alt="Graphic view of a process instance"></p>
+         <p class="Caption">
+            
+         </p>
+         <p class="Para">To view details, do the following:</p>
+         <ul>
+            <li class="ListItem">Select an activity from the diagram to view its
+               properties
+            </li>
+            
+            <li class="ListItem">Select an activity from the diagram to put the activity
+               in focus in the Outline
+            </li>
+         </ul>
+         <p class="Para">To print the diagram, select <strong class="Strong">Print Picture</strong> from
+            the right-mouse menu. The diagram prints with the same caption that
+            appears in the graph view. The timestamp indicates when the Process
+            Details page was opened or refreshed.
+         </p>
+         <p class="Para"><strong class="Strong">Printing Tips</strong></p>
+         <ul>
+            <li class="ListItem">To print a large diagram, select appropriate scaling
+               options in your Printer options dialog, such as Fit to Page or print
+               as x% of Normal Size
+            </li>
+            
+            <li class="ListItem">Save the diagram as an image file to print later</li>
+         </ul>
+         <p class="Para">See also <span class="CrossRef"><a href="Help1-9.html">Using the Process Details Outline View</a></span>.
+         </p>
+         <p class="Para">Back to <span class="CrossRef"><a href="Help1.html">ActiveBPEL&reg; Engine Administration Console Help</a></span></p>
+         <hr color="#9999cc" size="1">
+         <p class="Copyright">Copyright (c) 2004-2008 Active Endpoints, Inc. </p>
+      </div>
+   </body>
+</html>
