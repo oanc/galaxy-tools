@@ -8,21 +8,22 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DEB_JAVA_REPO="http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" \
     DEB_POSTGRESQL_REPO="http://apt.postgresql.org/pub/repos/apt/ squeeze-pgdg main" \
 	POSTGRES=postgresql-9.3 \
-	JAVA=openjdk-7-jdk \
 	TOMCAT_ROOT=/usr/share/tomcat \ 
 	MANAGER=/usr/share/tomcat/service-manager \
 	BPEL=/usr/share/tomcat/active-bpel
+	
+#ENV JAVA=oracle-java7-installer
+ENV	JAVA=openjdk-7-jdk 
 
+## ORACLE JAVA 7 INSTALLATION
 #RUN apt-get purge openjdk*
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
 #RUN add-apt-repository ppa:webupd8team/java
 #RUN apt-get update
 #RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y $JAVA
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y $POSTGRES
 
-
-RUN apt-get install -y openjdk-7-jdk
+RUN apt-get install -y $JAVA
 RUN apt-get install -y $POSTGRES
 
 ADD ./tomcat-root /usr/share/tomcat

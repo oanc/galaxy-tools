@@ -80,6 +80,7 @@ class GenerateWrappers {
                     output(name:'output', file:service.output, ftype:format)
                 }
             }
+            help service.help
             if (citation != null) {
             	citations {
 		            citation(type:'bibtex', citation)
@@ -101,6 +102,9 @@ class GenerateWrappers {
 			services.each { name,service ->
 				if (!service.output) {
 					service.output = "${name}-expected.${format}"
+				}
+				if (!service.help) {
+					service.help = service.description
 				}
 				if (!service.format) {
 					service.format = 'gate'
