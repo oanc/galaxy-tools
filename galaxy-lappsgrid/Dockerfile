@@ -2,7 +2,7 @@
 #
 # Version 0.1
 
-FROM bgruening/galaxy-stable:dev
+FROM bgruening/galaxy-stable:15.05
 
 MAINTAINER Keith Suderman, suderman@cs.vassar.edu
 
