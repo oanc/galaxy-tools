@@ -14,10 +14,10 @@
 		  <!-- <converter file="gate_to_lif_converter.xml" target_datatype="json"/> -->
 		</datatype>
 		<datatype extension="lif" type="galaxy.datatypes.lapps:Lif" display_in_upload="True" mimetype="application/json">
-		  <converter file="lif_to_gate.xml" target_datatype="gate"/>
+		  <!-- <converter file="lif_to_gate.xml" target_datatype="gate"/> -->
 		</datatype>
 		<datatype extension="ldc" type="galaxy.datatypes.lapps:Ldc" display_in_upload="True" mimetype="application/json">
-		  <converter file="ldc_to_lif_converter.xml" target_datatype="lif"/>
+		  <!-- <converter file="ldc_to_lif_converter.xml" target_datatype="lif"/> -->
 		</datatype>
 	</registration>
 	<sniffers>
