@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns='http://schemas.active-endpoints.com/catalog/2006/07/catalog.xsd' replace.existing="true">
-   <wsdlEntry location="project:/org.activebpel.rt.identity/support/wsdl/identity.wsdl" classpath="wsdl/org.activebpel.rt.identity/support/wsdl/identity.wsdl" />
-   <schemaEntry location="project:/org.activebpel.rt.identity/support/schema/identity.xsd" classpath="wsdl/org.activebpel.rt.identity/support/schema/identity.xsd" />
-</catalog>
