@@ -15,7 +15,8 @@ if [ -z "$JAVA_HOME" ] ; then
 	# This is the typical default installation location on Debian and Ubunutu.
 	# If this is different on your system either change this or ensure JAVA_HOME
 	# is set before this script is run.
-	JAVA_HOME=/usr/lib/jvm/java-7-oracle
+	#JAVA_HOME=/usr/lib/jvm/java-7-oracle
+	JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
 	if [ ! -d $JAVA_HOME ] ; then
 		echo "Tomcat service can not start. JAVA_HOME has not been set."
 		exit

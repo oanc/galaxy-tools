@@ -8,7 +8,7 @@ MAINTAINER Keith Suderman, suderman@cs.vassar.edu
 
 ENV GALAXY_CONFIG_BRAND LAPPS
 
-RUN apt-get update && apt-get install -y bash emacs-nox
+RUN apt-get update && apt-get install -y bash emacs24-nox
 
 ADD ./lsd-2.2.1-SNAPSHOT.jar /usr/bin/lsd.jar
 ADD ./lsd /usr/bin/lsd
