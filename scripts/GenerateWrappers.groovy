@@ -1,41 +1,38 @@
-//package org.anc.galaxy
-
+/*
+ * This Groovy script generates the Galaxy tool wrappers (XML files) and a bash script
+ * that can be called to generate the test data used in the <test> section of the 
+ * wrappers.
+ *
+ * Run `groovy GenerateWrappers.groovy --help` for usage information (or read the code).
+ */
+ 
 import groovy.xml.MarkupBuilder
+@GrabResolver(name='anc.org', root='http://www.anc.org:8080/nexus')
 @Grab('org.anc.json:compiler:1.2.0')
 import org.anc.json.compiler.*
 @Grab('org.lappsgrid:serialization:2.0.1')
 import org.lappsgrid.serialization.Serializer
-
-//import java.nio.file.Path
-//import java.nio.file.Paths
 
 /**
  * @author Keith Suderman
  */
 class GenerateWrappers {
 	
-    //File directory = new File("/Users/suderman/Workspaces/galaxy/gate_2_0_0")
     File xmlDirectory
     File bashDirectory
     File input
 	boolean generateXml = false
 	boolean generateBash = false
-	
+
+	// Default method of generating id values if none is provided.	
     Closure idGenerator = { name -> name }
     String format
     String citation
-    /*
-    String citation = """
-@Book{Cunningham2011a,
-  author = {Hamish Cunningham and Diana Maynard and Kalina Bontcheva and Valentin Tablan and Niraj Aswani and Ian Roberts and
-    Genevieve Gorrell and Adam Funk and Angus Roberts and Danica Damljanovic and Thomas Heitz and Mark A. Greenwood and
-    Horacio Saggion and Johann Petrak and Yaoyong Li and Wim Peters},
-  title = {{Text Processing with GATE (Version 6)}},
-  isbn = {978-0956599315},
-  year = 2011,
-  url = {http://tinyurl.com/gatebook}
-}"""
-*/
+
+	/**
+	 * Generates a bash script that will pull in the files used in the <test> 
+	 * sections of the XML files.
+	 */
     void writeLsdScript(Map services) {
     	File script = new File(bashDirectory, "test-data.sh")
     	script.withWriter { writer ->
@@ -52,6 +49,9 @@ class GenerateWrappers {
 		println "Wrote ${script.path}"
     }
 
+	/**
+	 * Generates the tool XML file for a single service.
+	 */
     void writeXml(String name, def service) {
 
         String id = idGenerator(name)
