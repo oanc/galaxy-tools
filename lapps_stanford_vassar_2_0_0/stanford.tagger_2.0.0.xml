@@ -1,0 +1,37 @@
+<tool id='stanford.tagger_2.0.0' name='Stanford Part of Speech Tagger' version='2.0.0'>
+    <description>Adds part of speech features to Tokens.  Requires Token and Sentence.</description>
+    <requirements>
+        <requirement type='package' version='2.2.1'>lsdsl</requirement>
+    </requirements>
+    <command interpreter='lsd'>invoke.lsd stanford.tagger_2.0.0 $input $output $username $password</command>
+    <inputs>
+        <param name='input' type='data' label='input' format='gate' />
+        <param name='username' type='text' label='Username' value='tester' />
+        <param name='password' type='text' label='Password' value='tester' />
+    </inputs>
+    <outputs>
+        <data name='output' format='lif' />
+    </outputs>
+    <tests>
+        <test>
+            <param name='input' value='splitter-expected.lif' />
+            <param name='username' value='tester' />
+            <param name='password' value='tester' />
+            <output name='output' file='tagger-expected.lif' ftype='lif' />
+        </test>
+    </tests>
+    <citations>
+        <citation type='bibtex'>@InProceedings{manning-EtAl:2014:P14-5,
+  author    = {Manning, Christopher D. and  Surdeanu, Mihai  and  Bauer, John  and  Finkel, Jenny  and  Bethard, Steven J. and  McClosky, David},
+  title     = {The {Stanford} {CoreNLP} Natural Language Processing Toolkit},
+  booktitle = {Proceedings of 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations},
+  year      = {2014},
+  pages     = {55--60},
+  url       = {http://www.aclweb.org/anthology/P/P14/P14-5010}
+}
+%  month     = {June},
+%  address   = {Baltimore, Maryland},
+%  publisher = {Association for Computational Linguistics},
+</citation>
+    </citations>
+</tool>

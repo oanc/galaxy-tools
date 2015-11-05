@@ -1,0 +1,8 @@
+
+String key = args[0]
+String output = args[1]
+
+def url = "http://vassar.lappsgrid.org/invoker/anc:masc.json_2.0.0"
+
+def service = new DataSourceClient(url, "tester", "tester")
+new File(output).text = service.get(key)

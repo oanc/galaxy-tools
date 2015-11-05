@@ -1,0 +1,8 @@
+import org.lappsgrid.discriminator.Discriminators.Uri
+
+Data data = new Data()
+data.discriminator = Uri.TEXT
+data.payload = "Hello world."
+
+new File('test-data/hello_world.txt').text = data.asJson()
+

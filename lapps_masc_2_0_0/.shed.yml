@@ -1,0 +1,14 @@
+categories: 
+  - NLP
+description: The Manually Annotated Sub-Corpus
+long_description: |
+  MASC is a balanced subset of 500K words from the Open American National Corpus.  All
+  data in MASC is available for use (including commercial use) free of charge.
+  
+  See https://www.anc.org/data/masc/corpus/
+name: masc_2_0_0
+owner: ksuderman
+remote_repository_url: https://github.com/oanc/galaxy-tools
+homepage_url: http://www.anc.org
+
+

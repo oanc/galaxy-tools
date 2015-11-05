@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+  <package name="lsdsl" version="2.2.1">
+    <repository name="package_lsdsl_2_2_1" owner="ksuderman"/>
+  </package>
+</tool_dependency>
