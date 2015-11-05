@@ -1,0 +1,11 @@
+categories: 
+    - NLP
+description: LAPPS Datatypes
+long_description: |
+  All of the LAPPS data formats are JSON documents and are differentiated by
+  the discriminator field.
+name: lapps_dockertypes_1_0_0
+owner: ksuderman
+remote_repository_url: https://github.com/oanc/galaxy-tools
+homepage_url: http://www.lappsgrid.org
+
