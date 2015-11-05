@@ -1,3 +1,3 @@
-GENERATOR="{id->'stanford.'+id+'_2.0.0'}"
+GENERATOR="{id->'brandeis.stanfordnlp.'+id+'_2.0.1'}"
 FORMAT=lif
 include ../Makefile.master

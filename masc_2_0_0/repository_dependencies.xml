@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<repositories description="The LAPPS datatype definitions are required (lapps, lif, ldc, and gate).">
-    <repository name="lapps_datatypes_1_0_0" owner="ksuderman" />
-</repositories>
